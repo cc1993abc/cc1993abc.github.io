@@ -94,14 +94,14 @@
 
 
 
-<meta name="description" content="How to Receive a jpg from browser通过存储数据库存储图片的路径,采用依赖注入的方式，后期_ImagePath易于更改，可以改为CDN等存储方式。1234567891011121314151617181920212223242526272829public async Task&lt;string&gt; SaveImage(IFormFile image)&amp;#123">
+<meta name="description" content="HTTPHTTP 1.0 VS HTTP 2.0 效率上的提升，减少连接次数，压缩请求头部及尾部 双工通信，服务器推送HTTPS VS HTTP HTTPS采用混合加密方式，对称加密保证传输效率，非对称加密保证安全性。 HTTPS需要进行解密加密等过程，(SSL协议提供了报文的完整性保护)相比HTTP速度会更慢，而且需要支付一定的费用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="blog-learn">
-<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2020/07/16/blog-learn/index.html">
+<meta property="og:title" content="http">
+<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2020/08/09/http/index.html">
 <meta property="og:site_name" content="CC">
-<meta property="og:description" content="How to Receive a jpg from browser通过存储数据库存储图片的路径,采用依赖注入的方式，后期_ImagePath易于更改，可以改为CDN等存储方式。1234567891011121314151617181920212223242526272829public async Task&lt;string&gt; SaveImage(IFormFile image)&amp;#123">
-<meta property="article:published_time" content="2020-07-15T22:49:56.000Z">
-<meta property="article:modified_time" content="2020-07-15T23:02:26.923Z">
+<meta property="og:description" content="HTTPHTTP 1.0 VS HTTP 2.0 效率上的提升，减少连接次数，压缩请求头部及尾部 双工通信，服务器推送HTTPS VS HTTP HTTPS采用混合加密方式，对称加密保证传输效率，非对称加密保证安全性。 HTTPS需要进行解密加密等过程，(SSL协议提供了报文的完整性保护)相比HTTP速度会更慢，而且需要支付一定的费用。">
+<meta property="article:published_time" content="2020-08-09T12:57:25.000Z">
+<meta property="article:modified_time" content="2020-08-09T13:06:23.105Z">
 <meta property="article:author" content="CC">
 <meta name="twitter:card" content="summary">
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2020/07/16/blog-learn/"/>
+  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2020/08/09/http/"/>
 
 
 
 
 
-  <title>blog-learn | CC</title>
+  <title>http | CC</title>
   
 
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/cc1993abc.github.io/2020/07/16/blog-learn/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/cc1993abc.github.io/2020/08/09/http/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CC">
@@ -278,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">blog-learn</h1>
+          <h1 class="post-title" itemprop="name headline">http</h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-16T06:49:56+08:00">
-                2020-07-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-09T20:57:25+08:00">
+                2020-08-09
               </time>
             
 
@@ -328,7 +328,13 @@
       
 
       
-        <h1 id="How-to-Receive-a-jpg-from-browser"><a href="#How-to-Receive-a-jpg-from-browser" class="headerlink" title="How to Receive a jpg from browser"></a>How to Receive a jpg from browser</h1><h2 id="通过存储数据库存储图片的路径-采用依赖注入的方式，后期-ImagePath易于更改，可以改为CDN等存储方式。"><a href="#通过存储数据库存储图片的路径-采用依赖注入的方式，后期-ImagePath易于更改，可以改为CDN等存储方式。" class="headerlink" title="通过存储数据库存储图片的路径,采用依赖注入的方式，后期_ImagePath易于更改，可以改为CDN等存储方式。"></a>通过存储数据库存储图片的路径,采用依赖注入的方式，后期_ImagePath易于更改，可以改为CDN等存储方式。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public async Task&lt;string&gt; SaveImage(IFormFile image)</span><br><span class="line">&#123;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">    var save_path &#x3D; Path.Combine(_imagePath);</span><br><span class="line">    if (!Directory.Exists(save_path))</span><br><span class="line">    &#123;</span><br><span class="line">        Directory.CreateDirectory(save_path);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;此策略中,数据库实际存储的是图片的路径地址，将stream流转换成 对应mime(格式)的文件存储在固定地址中，程序中存储在static文件夹中 _imagePath 通过 system.Configuration配置获得</span><br><span class="line">    var mime &#x3D; image.FileName.Substring(image.FileName.LastIndexOf(&#39;.&#39;));</span><br><span class="line">    var fileName &#x3D; $&quot;img_&#123;DateTime.Now.ToString(&quot;dd-MM-yyyy-HH-mm-ss&quot;)&#125;&#123;mime&#125;&quot;;</span><br><span class="line">    var test &#x3D; Path.Combine(save_path, fileName);</span><br><span class="line">    using (var fileSteam &#x3D; new FileStream(Path.Combine(save_path,fileName),FileMode.Create))</span><br><span class="line">    &#123;</span><br><span class="line">        await image.CopyToAsync(fileSteam);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return fileName;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    catch (Exception e )</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(e.Message);</span><br><span class="line">        return &quot;error&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="HTTP-1-0-VS-HTTP-2-0"><a href="#HTTP-1-0-VS-HTTP-2-0" class="headerlink" title="HTTP 1.0 VS HTTP 2.0"></a>HTTP 1.0 VS HTTP 2.0</h2><ul>
+<li>效率上的提升，减少连接次数，压缩请求头部及尾部</li>
+<li>双工通信，服务器推送<h2 id="HTTPS-VS-HTTP"><a href="#HTTPS-VS-HTTP" class="headerlink" title="HTTPS VS HTTP"></a>HTTPS VS HTTP</h2></li>
+<li>HTTPS采用混合加密方式，对称加密保证传输效率，非对称加密保证安全性。</li>
+<li>HTTPS需要进行解密加密等过程，(SSL协议提供了报文的完整性保护)相比HTTP速度会更慢，而且需要支付一定的费用。</li>
+</ul>
+
       
     </div>
     
@@ -352,8 +358,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/cc1993abc.github.io/2020/07/15/Sad/" rel="next" title="Sad">
-                <i class="fa fa-chevron-left"></i> Sad
+              <a href="/cc1993abc.github.io/2020/07/31/equals/" rel="next" title="equals">
+                <i class="fa fa-chevron-left"></i> equals
               </a>
             
           </div>
@@ -361,10 +367,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/cc1993abc.github.io/2020/07/20/CacheProfiles/" rel="prev" title="CacheProfiles">
-                CacheProfiles <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -480,7 +482,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-Receive-a-jpg-from-browser"><span class="nav-number">1.</span> <span class="nav-text">How to Receive a jpg from browser</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过存储数据库存储图片的路径-采用依赖注入的方式，后期-ImagePath易于更改，可以改为CDN等存储方式。"><span class="nav-number">1.1.</span> <span class="nav-text">通过存储数据库存储图片的路径,采用依赖注入的方式，后期_ImagePath易于更改，可以改为CDN等存储方式。</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number">1.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-1-0-VS-HTTP-2-0"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP 1.0 VS HTTP 2.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS-VS-HTTP"><span class="nav-number">1.2.</span> <span class="nav-text">HTTPS VS HTTP</span></a></li></ol></li></ol></div>
             
 
           </div>
