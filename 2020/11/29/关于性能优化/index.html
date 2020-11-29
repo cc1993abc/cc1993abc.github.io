@@ -94,14 +94,14 @@
 
 
 
-<meta name="description" content="其实还是一头雾水最近在重读C# in Depth 这本书，又读到了泛型方法关于比较相关的段落，基本的用法都知道了，equals方法其实是string class下的一个方法， 在未重载equals方法时，很多时候用equals比较会引起装箱操作。 以下举个简单例子说明&#x3D;&#x3D; 操作符和 equals 操作符的区别12345678910111213141516using System;  namespa">
+<meta name="description" content="关于性能优化性能优化是一个很宽泛且很难一言盖之的话题，最近在项目中遇到了一些简单的性能优化和自己的一些体会。  场景1 其他团队提供了HTTP请求的接口， 我的某项业务有提供ID 根据ID查询某一项数据。 当然最简单的是把ID合并成List，让对接的团队将接口改成接收list参数是最简单的，但是如果对接团队不改，该怎么办呢？ 就单单这一项简单的请求我们可以有很多可以做的， 首先我们举一个错误的例子">
 <meta property="og:type" content="article">
-<meta property="og:title" content="equals">
-<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2020/07/31/equals/index.html">
+<meta property="og:title" content="关于性能优化">
+<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2020/11/29/%E5%85%B3%E4%BA%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="CC">
-<meta property="og:description" content="其实还是一头雾水最近在重读C# in Depth 这本书，又读到了泛型方法关于比较相关的段落，基本的用法都知道了，equals方法其实是string class下的一个方法， 在未重载equals方法时，很多时候用equals比较会引起装箱操作。 以下举个简单例子说明&#x3D;&#x3D; 操作符和 equals 操作符的区别12345678910111213141516using System;  namespa">
-<meta property="article:published_time" content="2020-07-31T08:15:14.000Z">
-<meta property="article:modified_time" content="2020-07-31T08:35:30.427Z">
+<meta property="og:description" content="关于性能优化性能优化是一个很宽泛且很难一言盖之的话题，最近在项目中遇到了一些简单的性能优化和自己的一些体会。  场景1 其他团队提供了HTTP请求的接口， 我的某项业务有提供ID 根据ID查询某一项数据。 当然最简单的是把ID合并成List，让对接的团队将接口改成接收list参数是最简单的，但是如果对接团队不改，该怎么办呢？ 就单单这一项简单的请求我们可以有很多可以做的， 首先我们举一个错误的例子">
+<meta property="article:published_time" content="2020-11-29T14:53:43.937Z">
+<meta property="article:modified_time" content="2020-11-29T15:05:05.615Z">
 <meta property="article:author" content="CC">
 <meta name="twitter:card" content="summary">
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2020/07/31/equals/"/>
+  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2020/11/29/关于性能优化/"/>
 
 
 
 
 
-  <title>equals | CC</title>
+  <title>关于性能优化 | CC</title>
   
 
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/cc1993abc.github.io/2020/07/31/equals/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/cc1993abc.github.io/2020/11/29/%E5%85%B3%E4%BA%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CC">
@@ -278,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">equals</h1>
+          <h1 class="post-title" itemprop="name headline">关于性能优化</h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-31T16:15:14+08:00">
-                2020-07-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-29T22:53:43+08:00">
+                2020-11-29
               </time>
             
 
@@ -328,10 +328,18 @@
       
 
       
-        <h1 id="其实还是一头雾水"><a href="#其实还是一头雾水" class="headerlink" title="其实还是一头雾水"></a>其实还是一头雾水</h1><p>最近在重读C# in Depth 这本书，又读到了泛型方法关于比较相关的段落，基本的用法都知道了，equals方法其实是string class下的一个方法， 在未重载equals方法时，很多时候用equals比较会引起<strong>装箱</strong>操作。</p>
-<h2 id="以下举个简单例子说明-操作符和-equals-操作符的区别"><a href="#以下举个简单例子说明-操作符和-equals-操作符的区别" class="headerlink" title="以下举个简单例子说明== 操作符和 equals 操作符的区别"></a>以下举个简单例子说明== 操作符和 equals 操作符的区别</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;  </span><br><span class="line"><span class="keyword">namespace</span> <span class="title">ComparisionExample</span>  </span><br><span class="line">&#123;  </span><br><span class="line">   <span class="keyword">class</span> <span class="title">Program</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">       <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)  </span></span><br><span class="line"><span class="function"></span>        &#123;  </span><br><span class="line">           <span class="keyword">object</span> name = <span class="string">"sandeep"</span>;  </span><br><span class="line">           <span class="keyword">char</span>[] values = &#123;<span class="string">'s'</span>,<span class="string">'a'</span>,<span class="string">'n'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>,<span class="string">'e'</span>,<span class="string">'p'</span>&#125;;  </span><br><span class="line">           <span class="keyword">object</span> myName = <span class="keyword">new</span> <span class="keyword">string</span>(values);           </span><br><span class="line">           Console.WriteLine(<span class="string">"== operator result is &#123;0&#125;"</span>, name == myName);  <span class="comment">//false</span></span><br><span class="line">           Console.WriteLine(<span class="string">"Equals method result is &#123;0&#125;"</span>, myName.Equals(name));  <span class="comment">//true</span></span><br><span class="line">           Console.ReadKey();  </span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="关于性能优化"><a href="#关于性能优化" class="headerlink" title="关于性能优化"></a>关于性能优化</h1><p>性能优化是一个很宽泛且很难一言盖之的话题，最近在项目中遇到了一些简单的性能优化和自己的一些体会。</p>
+<ol>
+<li><p>场景1 其他团队提供了HTTP请求的接口， 我的某项业务有提供ID 根据ID查询某一项数据。 当然最简单的是把ID合并成List，让对接的团队将接口改成接收list参数是最简单的，但是如果对接团队不改，该怎么办呢？ 就单单这一项简单的请求我们可以有很多可以做的， 首先我们举一个错误的例子。如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foreach(id in ids)&#123;</span><br><span class="line">using(var client &#x3D; new HttpClient())&#123;</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    client.postAsync();</span><br><span class="line">&#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>因为char数组实际做了toString(),So 输出结果equals 是相等的， ==操作符比较引用地址。</p>
+<p>client不会随着using代码块的闭合而闭合，因为这是系统级别的创建，而且每一次new HttpClient会有个预热机制会造成大量的等待。当然我们可以使用单例模式对httpclient进行改造。但是在.NET CORE 2.1+版本后 官方给出了</p>
+</li>
+</ol>
+<p>   的介绍 ，以及</p>
+<p>   显然， 在线程安全的情况下 ，用有限个HTTPCLIENT处理大量请求在这个场景下是最合理的，而什么是有限， 我们只需要将请求交给IHttpClientFactory就可以了。</p>
+<h2 id="更近一步"><a href="#更近一步" class="headerlink" title="更近一步"></a>更近一步</h2><p>   当然不做请求是最好的， 因为ID是有限个的，我们当然可以将第一次请求的数据作数据持久化， 我们可以使用缓存，我们可以使用DB直接存储， 我们也可以使用Redis,我司请求量小，所以技术千千万，甚至在某些场景下，我们可以做前端存储，localstorage, 或者一些preload的技术。</p>
+<p>   都是根据实际业务请求的场景都可以做的。  因此我也更有了一些感悟，互联网公司程序员可能和传统公司的程序员做的东西会又云泥之分了， 因为碰不上那些场景，一些技术压根就真的只能当作面试用， 如上所述， 我的数据直接存DB都可以解决公司的需求，而且代码简单。   </p>
 
       
     </div>
@@ -356,8 +364,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/cc1993abc.github.io/2020/07/20/CacheProfiles/" rel="next" title="CacheProfiles">
-                <i class="fa fa-chevron-left"></i> CacheProfiles
+              <a href="/cc1993abc.github.io/2020/08/10/MQ/" rel="next" title="MQ">
+                <i class="fa fa-chevron-left"></i> MQ
               </a>
             
           </div>
@@ -365,10 +373,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/cc1993abc.github.io/2020/08/09/http/" rel="prev" title="HTTP">
-                HTTP <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -484,7 +488,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#其实还是一头雾水"><span class="nav-number">1.</span> <span class="nav-text">其实还是一头雾水</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#以下举个简单例子说明-操作符和-equals-操作符的区别"><span class="nav-number">1.1.</span> <span class="nav-text">以下举个简单例子说明&#x3D;&#x3D; 操作符和 equals 操作符的区别</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于性能优化"><span class="nav-number">1.</span> <span class="nav-text">关于性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#更近一步"><span class="nav-number">1.1.</span> <span class="nav-text">更近一步</span></a></li></ol></li></ol></div>
             
 
           </div>
