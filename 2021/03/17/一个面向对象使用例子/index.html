@@ -94,14 +94,14 @@
 
 
 
-<meta name="description" content="关于性能优化性能优化是一个很宽泛且很难一言盖之的话题，最近在项目中遇到了一些简单的性能优化和自己的一些体会。  场景1 其他团队提供了HTTP请求的接口， 我的某项业务有提供ID 根据ID查询某一项数据。 当然最简单的是把ID合并成List，让对接的团队将接口改成接收list参数是最简单的，但是如果对接团队不改，该怎么办呢？ 就单单这一项简单的请求我们可以有很多可以做的， 首先我们举一个错误的例子">
+<meta name="description" content="一个依赖注入,注入多个不同的DB用到的时用到的面向对象方法,原有的构造函数用使用的是接口注入 子类构造函数只需继承该被注入接口,然后构造函数使用子接口即可 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于性能优化">
-<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2020/11/29/%E5%85%B3%E4%BA%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="一个面向对象使用例子">
+<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2021/03/17/%E4%B8%80%E4%B8%AA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90/index.html">
 <meta property="og:site_name" content="CC">
-<meta property="og:description" content="关于性能优化性能优化是一个很宽泛且很难一言盖之的话题，最近在项目中遇到了一些简单的性能优化和自己的一些体会。  场景1 其他团队提供了HTTP请求的接口， 我的某项业务有提供ID 根据ID查询某一项数据。 当然最简单的是把ID合并成List，让对接的团队将接口改成接收list参数是最简单的，但是如果对接团队不改，该怎么办呢？ 就单单这一项简单的请求我们可以有很多可以做的， 首先我们举一个错误的例子">
-<meta property="article:published_time" content="2020-11-29T14:53:43.937Z">
-<meta property="article:modified_time" content="2020-11-30T12:03:19.264Z">
+<meta property="og:description" content="一个依赖注入,注入多个不同的DB用到的时用到的面向对象方法,原有的构造函数用使用的是接口注入 子类构造函数只需继承该被注入接口,然后构造函数使用子接口即可 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656">
+<meta property="article:published_time" content="2021-03-16T20:33:15.000Z">
+<meta property="article:modified_time" content="2021-06-03T20:44:14.485Z">
 <meta property="article:author" content="CC">
 <meta name="twitter:card" content="summary">
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2020/11/29/关于性能优化/"/>
+  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2021/03/17/一个面向对象使用例子/"/>
 
 
 
 
 
-  <title>关于性能优化 | CC</title>
+  <title>一个面向对象使用例子 | CC</title>
   
 
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/2020/11/29/%E5%85%B3%E4%BA%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/2021/03/17/%E4%B8%80%E4%B8%AA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CC">
@@ -278,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于性能优化</h1>
+          <h1 class="post-title" itemprop="name headline">一个面向对象使用例子</h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-29T22:53:43+08:00">
-                2020-11-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-17T04:33:15+08:00">
+                2021-03-17
               </time>
             
 
@@ -328,20 +328,9 @@
       
 
       
-        <h1 id="关于性能优化"><a href="#关于性能优化" class="headerlink" title="关于性能优化"></a>关于性能优化</h1><p>性能优化是一个很宽泛且很难一言盖之的话题，最近在项目中遇到了一些简单的性能优化和自己的一些体会。</p>
-<ol>
-<li><p>场景1 其他团队提供了HTTP请求的接口， 我的某项业务有提供ID 根据ID查询某一项数据。 当然最简单的是把ID合并成List，让对接的团队将接口改成接收list参数是最简单的，但是如果对接团队不改，该怎么办呢？ 就单单这一项简单的请求我们可以有很多可以做的， 首先我们举一个错误的例子。如下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foreach(id in ids)&#123;</span><br><span class="line">using(var client &#x3D; new HttpClient())&#123;</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    client.postAsync();</span><br><span class="line">&#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p><strong>一个依赖注入,注入多个不同的DB用到的时用到的面向对象方法,原有的构造函数用使用的是接口注入 子类构造函数只需继承该被注入接口,然后构造函数使用子接口即可</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line"></span><br><span class="line">namespace WebApplication2.Models</span><br><span class="line">&#123;</span><br><span class="line">    public interface IRepo</span><br><span class="line">    &#123;</span><br><span class="line">        string HelloConnect();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class Repo : IRepo</span><br><span class="line">    &#123;</span><br><span class="line">        private readonly string _db;</span><br><span class="line">        public Repo(IConnect farther)</span><br><span class="line">        &#123;</span><br><span class="line">            this._db &#x3D; farther.GetConnection();</span><br><span class="line">        &#125;</span><br><span class="line">        public string HelloConnect()</span><br><span class="line">        &#123;</span><br><span class="line">            throw new NotImplementedException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface ISon : IRepo</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class Son : Repo, ISon</span><br><span class="line">    &#123;</span><br><span class="line">        private readonly string _db;</span><br><span class="line">        public Son(ISonConnect dt) : base(dt)</span><br><span class="line">        &#123;</span><br><span class="line">            _db &#x3D; dt.GetConnection();</span><br><span class="line">        &#125;</span><br><span class="line">        public new string HelloConnect()</span><br><span class="line">        &#123;</span><br><span class="line">            return _db;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface IConnect</span><br><span class="line">    &#123;</span><br><span class="line">        string GetConnection();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class Connect : IConnect</span><br><span class="line">    &#123;</span><br><span class="line">        public string GetConnection()</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;Hello&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface ISonConnect : IConnect</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class SonConnect : ISonConnect</span><br><span class="line">    &#123;</span><br><span class="line">        public string GetConnection()</span><br><span class="line">        &#123;</span><br><span class="line">            throw new NotImplementedException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>client不会随着using代码块的闭合而闭合，因为这是系统级别的创建，而且每一次new HttpClient会有个预热机制会造成大量的等待。当然我们可以使用单例模式对httpclient进行改造。但是在.NET CORE 2.1+版本后 官方给出了</p>
-<p><a href="https://docs.microsoft.com/zh-cn/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests" target="_blank" rel="noopener">HTTPCLIENTFACTORY的介绍</a></p>
-<p>的介绍 ，以及</p>
-<p><a href="https://docs.microsoft.com/zh-cn/aspnet/core/fundamentals/http-requests?view=aspnetcore-5.0" target="_blank" rel="noopener">用法</a></p>
-<p>显然， 在线程安全的情况下 ，用有限个HTTPCLIENT处理大量请求在这个场景下是最合理的，而什么是有限， 我们只需要将请求交给IHttpClientFactory就可以了。</p>
-<h2 id="更近一步"><a href="#更近一步" class="headerlink" title="更近一步"></a>更近一步</h2><p>当然不做请求是最好的， 因为ID是有限个的，我们当然可以将第一次请求的数据作数据持久化， 我们可以使用缓存，我们可以使用DB直接存储， 我们也可以使用Redis,我司请求量小，所以技术千千万，甚至在某些场景下，我们可以做前端存储，localstorage, 或者一些preload的技术。</p>
-<p>都是根据实际业务请求的场景都可以做的。  因此我也更有了一些感悟，互联网公司程序员可能和传统公司的程序员做的东西会又云泥之分了， 因为碰不上那些场景，一些技术压根就真的只能当作面试用， 如上所述， 我的数据直接存DB都可以解决公司的需求，而且代码简单。   </p>
-</li>
-</ol>
 
       
     </div>
@@ -366,8 +355,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/08/10/MQ/" rel="next" title="MQ">
-                <i class="fa fa-chevron-left"></i> MQ
+              <a href="/2020/11/29/%E5%85%B3%E4%BA%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="next" title="关于性能优化">
+                <i class="fa fa-chevron-left"></i> 关于性能优化
               </a>
             
           </div>
@@ -376,8 +365,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/03/17/%E4%B8%80%E4%B8%AA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90/" rel="prev" title="一个面向对象使用例子">
-                一个面向对象使用例子 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/04/03/%E4%B8%80%E4%BA%9B%E5%9D%91/" rel="prev" title="一些坑">
+                一些坑 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -430,17 +419,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -484,22 +464,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于性能优化"><span class="nav-number">1.</span> <span class="nav-text">关于性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#更近一步"><span class="nav-number">1.1.</span> <span class="nav-text">更近一步</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
