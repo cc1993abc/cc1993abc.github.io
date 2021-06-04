@@ -94,12 +94,14 @@
 
 
 
+<meta name="description" content="简单写一点Saas,和设计实现传统的服务要包含硬件,随着云服务的技术发展,理论上许许多多小的开发商也是Saas的提供者也是Saas服务的使用者 Saas当然更多是是一个To B的概念,对于开发者来说, 我们一般考虑是功能架构上事,如何实现功能的重用与个性化服务 现在公司的数据隔离是使用merchantId  即商户Id  有些会命名成租户ID即tenantID,不知是什么原因,也许是公司代码是经过">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HttpContext">
-<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/04/HttpContext/index.html">
+<meta property="og:title" content="Saas">
+<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2021/01/03/Saas/index.html">
 <meta property="og:site_name" content="CC">
-<meta property="article:published_time" content="2021-06-03T16:25:39.000Z">
-<meta property="article:modified_time" content="2021-06-03T16:25:39.553Z">
+<meta property="og:description" content="简单写一点Saas,和设计实现传统的服务要包含硬件,随着云服务的技术发展,理论上许许多多小的开发商也是Saas的提供者也是Saas服务的使用者 Saas当然更多是是一个To B的概念,对于开发者来说, 我们一般考虑是功能架构上事,如何实现功能的重用与个性化服务 现在公司的数据隔离是使用merchantId  即商户Id  有些会命名成租户ID即tenantID,不知是什么原因,也许是公司代码是经过">
+<meta property="article:published_time" content="2021-01-03T03:54:57.000Z">
+<meta property="article:modified_time" content="2021-06-04T18:53:17.990Z">
 <meta property="article:author" content="CC">
 <meta name="twitter:card" content="summary">
 
@@ -130,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/04/HttpContext/"/>
+  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2021/01/03/Saas/"/>
 
 
 
 
 
-  <title>HttpContext | CC</title>
+  <title>Saas | CC</title>
   
 
 
@@ -259,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/04/HttpContext/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/2021/01/03/Saas/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CC">
@@ -276,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HttpContext</h1>
+          <h1 class="post-title" itemprop="name headline">Saas</h1>
         
 
         <div class="post-meta">
@@ -288,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-04T00:25:39+08:00">
-                2021-06-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-03T11:54:57+08:00">
+                2021-01-03
               </time>
             
 
@@ -326,7 +328,11 @@
       
 
       
-        
+        <h1 id="简单写一点Saas-和设计实现"><a href="#简单写一点Saas-和设计实现" class="headerlink" title="简单写一点Saas,和设计实现"></a>简单写一点Saas,和设计实现</h1><p><u>传统的服务要包含硬件,随着云服务的技术发展,理论上许许多多小的开发商也是Saas的提供者也是Saas服务的使用者</u></p>
+<p>Saas当然更多是是一个To B的概念,对于开发者来说, 我们一般考虑是功能架构上事,如何实现功能的重用与个性化服务</p>
+<p>现在公司的数据隔离是使用merchantId  即商户Id  有些会命名成租户ID即tenantID,不知是什么原因,也许是公司代码是经过重构而来的,基类中并没有封装一些基础方法,比如查询中 应该把tenantId的条件自动加入</p>
+<p>除了现在遇到的这种数据存储方式,还有两种方式,另外两种方式,我的设想是独立数据库和独立schema是需要在登录时动态生成数据库连接地址,需要一个中心的数据库存放这个关系,在租户信息表中体现。 这样的开发成本,维护成本显然是最高的,但是安全性,个性化程度可以做到更高.</p>
+<h3 id="1-独立数据库"><a href="#1-独立数据库" class="headerlink" title="1. 独立数据库"></a>1. 独立数据库</h3><h3 id="2-共享数据库，独立-Schema"><a href="#2-共享数据库，独立-Schema" class="headerlink" title="2. 共享数据库，独立 Schema"></a>2. 共享数据库，独立 Schema</h3>
       
     </div>
     
@@ -350,8 +356,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/05/03/design-pattern/" rel="next" title="design-pattern principal">
-                <i class="fa fa-chevron-left"></i> design-pattern principal
+              <a href="/2020/11/29/%E5%85%B3%E4%BA%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="next" title="关于性能优化">
+                <i class="fa fa-chevron-left"></i> 关于性能优化
               </a>
             
           </div>
@@ -359,6 +365,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/03/17/%E4%B8%80%E4%B8%AA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90/" rel="prev" title="一个面向对象使用例子">
+                一个面向对象使用例子 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -410,8 +420,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -455,6 +474,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单写一点Saas-和设计实现"><span class="nav-number">1.</span> <span class="nav-text">简单写一点Saas,和设计实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-独立数据库"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 独立数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-共享数据库，独立-Schema"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 共享数据库，独立 Schema</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
