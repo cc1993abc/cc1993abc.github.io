@@ -259,6 +259,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/2020/07/20/CacheProfiles/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CC">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CC">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/20/CacheProfiles/" itemprop="url">CacheProfiles</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-20T18:28:58+08:00">
+                2020-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="NET-CORE中使用Cache"><a href="#NET-CORE中使用Cache" class="headerlink" title=".NET CORE中使用Cache"></a>.NET CORE中使用Cache</h1><h2 id="在startup中注册一个名称为monthly的缓存策略。"><a href="#在startup中注册一个名称为monthly的缓存策略。" class="headerlink" title="在startup中注册一个名称为monthly的缓存策略。"></a>在startup中注册一个名称为monthly的缓存策略。</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">services.AddMvc(options =&gt; &#123;</span><br><span class="line">    options.EnableEndpointRouting = <span class="literal">false</span>;</span><br><span class="line">    options.CacheProfiles.Add(<span class="string">"Monthly"</span>, <span class="keyword">new</span> CacheProfile &#123; Duration = <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">7</span> &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="用Attribute方式使用该缓存策略，如图片缓存"><a href="#用Attribute方式使用该缓存策略，如图片缓存" class="headerlink" title="用Attribute方式使用该缓存策略，如图片缓存"></a>用Attribute方式使用该缓存策略，如图片缓存</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">HttpGet(<span class="meta-string">"/Image/&#123;image&#125;"</span>)</span>]</span><br><span class="line">[<span class="meta">ResponseCache(CacheProfileName =<span class="meta-string">"monthly"</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> IActionResult <span class="title">Image</span>(<span class="params"><span class="keyword">string</span> image</span>)</span> =&gt; <span class="keyword">new</span> FileStreamResult(_fileManager.ImageStream(image), <span class="string">$"image/<span class="subst">&#123;image.Substring(image.LastIndexOf(<span class="string">'.'</span>))&#125;</span>"</span>);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/2020/07/16/blog-learn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -535,7 +655,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

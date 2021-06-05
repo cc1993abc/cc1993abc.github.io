@@ -94,16 +94,18 @@
 
 
 
-<meta name="description" content="dsadasdasdsa">
+<meta name="description" content="这里我使用visual studio作为工具生成dockerfile,当然vscode也有的生成dockerfile的工具,我使用windows系统作为载体 遇到了不少坑。 docker for windows 安装 注意点 控制面板开启HyperV功能 全程开启管理员权限安装(重点),PowerShell执行命令同理 1.项目创建 1dotnet new webApi -o HelloWorld">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sad">
-<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2020/06/15/Sad/index.html">
+<meta property="og:title" content="在windows上用docker发布应用">
+<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/05/%E5%9C%A8windows%E4%B8%8A%E7%94%A8docker%E5%8F%91%E5%B8%83%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="CC">
-<meta property="og:description" content="dsadasdasdsa">
-<meta property="article:published_time" content="2020-06-14T22:07:30.000Z">
-<meta property="article:modified_time" content="2021-06-03T12:06:53.437Z">
+<meta property="og:description" content="这里我使用visual studio作为工具生成dockerfile,当然vscode也有的生成dockerfile的工具,我使用windows系统作为载体 遇到了不少坑。 docker for windows 安装 注意点 控制面板开启HyperV功能 全程开启管理员权限安装(重点),PowerShell执行命令同理 1.项目创建 1dotnet new webApi -o HelloWorld">
+<meta property="og:image" content="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/05/%E5%9C%A8windows%E4%B8%8A%E7%94%A8docker%E5%8F%91%E5%B8%83%E5%BA%94%E7%94%A8/Images%5Ctest.png">
+<meta property="article:published_time" content="2021-06-05T13:04:50.000Z">
+<meta property="article:modified_time" content="2021-06-05T13:58:04.070Z">
 <meta property="article:author" content="CC">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/05/%E5%9C%A8windows%E4%B8%8A%E7%94%A8docker%E5%8F%91%E5%B8%83%E5%BA%94%E7%94%A8/Images%5Ctest.png">
 
 
 
@@ -132,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2020/06/15/Sad/"/>
+  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/05/在windows上用docker发布应用/"/>
 
 
 
 
 
-  <title>Sad | CC</title>
+  <title>在windows上用docker发布应用 | CC</title>
   
 
 
@@ -261,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/2020/06/15/Sad/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/05/%E5%9C%A8windows%E4%B8%8A%E7%94%A8docker%E5%8F%91%E5%B8%83%E5%BA%94%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CC">
@@ -278,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Sad</h1>
+          <h1 class="post-title" itemprop="name headline">在windows上用docker发布应用</h1>
         
 
         <div class="post-meta">
@@ -290,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-15T06:07:30+08:00">
-                2020-06-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-05T21:04:50+08:00">
+                2021-06-05
               </time>
             
 
@@ -328,7 +330,24 @@
       
 
       
-        <p>dsadasdasdsa</p>
+        <p>这里我使用visual studio作为工具生成dockerfile,当然vscode也有的生成dockerfile的工具,我使用windows系统作为载体 遇到了不少坑。</p>
+<p><a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">docker for windows 安装</a></p>
+<p>注意点 控制面板开启HyperV功能</p>
+<p>全程开启管理员权限安装(重点),PowerShell执行命令同理</p>
+<p>1.项目创建</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet new webApi <span class="literal">-o</span> HelloWorldNetCore -<span class="literal">-no</span><span class="literal">-https</span></span><br></pre></td></tr></table></figure>
+
+<p>2.使用visual studio 打开Sln文件</p>
+<p>因为docker配置https很麻烦,可以在创建项目时 –no-https 或者在starup中注释掉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注释掉Https跳转中间件</span><br><span class="line">&#x2F;&#x2F;app.UseHttpsRedirection();</span><br></pre></td></tr></table></figure>
+
+<p>Vs2019右键点击项目会生成如下dockerfile</p>
+<p>在dockerfile 所在的路径上执行</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build <span class="literal">-t</span> helloworld:v1 .</span><br></pre></td></tr></table></figure>
+
+<p>注意这行命令中的.不能少</p>
+<p><img src="Images%5Ctest.png" alt="图片"></p>
+<p>最后 docker run  -p 8084:80 testwithouthttps   -p访问指定端口 确保不被占用就行，然后访问即可</p>
 
       
     </div>
@@ -353,15 +372,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2021/06/04/HttpContext/" rel="next" title="HttpContext">
+                <i class="fa fa-chevron-left"></i> HttpContext
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/16/blog-learn/" rel="prev" title="blog-learn">
-                blog-learn <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
