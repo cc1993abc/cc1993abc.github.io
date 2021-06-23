@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="GO-Learning由于学过C# 实在看不动JAVA,还是来玩Go吧,祝自己两个月内转型成功 使用书籍是《Go 语言趣学指南》作为入门书籍 Get-Ready1.Go程序从main包的main函数开始执行 2.唯一允许大括号规则  - 与Visual Studio 自动格式化代码的大括号规则相反 3.在线编译调试 Format与所学的C# pyhon 差异不大, 用%v 用来当展位符,C#是支持">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go-Learning">
+<meta property="og:url" content="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/22/Go-Learning/index.html">
+<meta property="og:site_name" content="CC">
+<meta property="og:description" content="GO-Learning由于学过C# 实在看不动JAVA,还是来玩Go吧,祝自己两个月内转型成功 使用书籍是《Go 语言趣学指南》作为入门书籍 Get-Ready1.Go程序从main包的main函数开始执行 2.唯一允许大括号规则  - 与Visual Studio 自动格式化代码的大括号规则相反 3.在线编译调试 Format与所学的C# pyhon 差异不大, 用%v 用来当展位符,C#是支持">
+<meta property="article:published_time" content="2021-06-22T15:29:50.000Z">
+<meta property="article:modified_time" content="2021-06-23T18:21:52.804Z">
+<meta property="article:author" content="CC">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/22/Go-Learning/"/>
+
+
+
+
+
+  <title>Go-Learning | CC</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CC</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Blog Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/cc1993abc/cc1993abc.github.io/2021/06/22/Go-Learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CC">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CC">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Go-Learning</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-22T23:29:50+08:00">
+                2021-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="GO-Learning"><a href="#GO-Learning" class="headerlink" title="GO-Learning"></a>GO-Learning</h1><p>由于学过C# 实在看不动JAVA,还是来玩Go吧,祝自己两个月内转型成功</p>
+<p>使用书籍是<strong>《Go 语言趣学指南》</strong>作为入门书籍</p>
+<h4 id="Get-Ready"><a href="#Get-Ready" class="headerlink" title="Get-Ready"></a>Get-Ready</h4><p>1.<strong>Go程序从main包的main函数开始执行</strong></p>
+<p>2.<strong>唯一允许大括号规则  - 与Visual Studio 自动格式化代码的大括号规则相反</strong></p>
+<p>3.<a href="https://play.golang.org/" target="_blank" rel="noopener">在线编译调试</a></p>
+<h4 id="Format"><a href="#Format" class="headerlink" title="Format"></a>Format</h4><p>与所学的C# pyhon 差异不大, 用%v 用来当展位符,C#是支持占位符和插值表达式的.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// main is the function where it all begins.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Print(<span class="string">"My weight on the surface of Mars is "</span>)</span><br><span class="line">	fmt.Print(<span class="number">149.0</span> * <span class="number">0.3783</span>)</span><br><span class="line">	fmt.Print(<span class="string">" lbs, and I would be "</span>)</span><br><span class="line">	fmt.Print(<span class="number">41</span> * <span class="number">365</span> / <span class="number">687</span>)</span><br><span class="line">	fmt.Print(<span class="string">" years old."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="一次声明多个变量"><a href="#一次声明多个变量" class="headerlink" title="一次声明多个变量"></a>一次声明多个变量</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    distance = <span class="number">1111</span></span><br><span class="line">    speed = <span class="number">100800</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> distance, speed = <span class="number">10021312</span>, <span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="增量赋值操作-与-C-没什么差别"><a href="#增量赋值操作-与-C-没什么差别" class="headerlink" title="增量赋值操作 与 C# 没什么差别 ,"></a>增量赋值操作 与 C# 没什么差别 ,</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var weight &#x3D; 144</span><br><span class="line">weight *&#x3D; 2</span><br><span class="line">weight +&#x3D; 1</span><br></pre></td></tr></table></figure>
+
+<h4 id="随机生成数字-go语言多次执行会缓存结果-多次执行也会生成一样的结果"><a href="#随机生成数字-go语言多次执行会缓存结果-多次执行也会生成一样的结果" class="headerlink" title="随机生成数字(go语言多次执行会缓存结果,多次执行也会生成一样的结果)"></a>随机生成数字(go语言多次执行会缓存结果,多次执行也会生成一样的结果)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;math&#x2F;rand&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	var num &#x3D; rand.Intn(10) + 1</span><br><span class="line">	fmt.Println(num)</span><br><span class="line"></span><br><span class="line">	num &#x3D; rand.Intn(10) + 1</span><br><span class="line">	fmt.Println(num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="循环与分支"><a href="#循环与分支" class="headerlink" title="循环与分支"></a>循环与分支</h4><p>和其他语言都一样,准备用leetCode来熟悉</p>
+<p>for 循环在go中不太一样</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">10</span></span><br><span class="line"><span class="keyword">for</span> count &gt; <span class="number">0</span>&#123;</span><br><span class="line">	<span class="comment">//TODO</span></span><br><span class="line">	count--</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><p>跟C# go差不多 暂时不深入看了,</p>
+<h1 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h1><h4 id="整数回绕"><a href="#整数回绕" class="headerlink" title="整数回绕"></a>整数回绕</h4><p>比如 某数据类型取值范围是0-2的8次方</p>
+<p>那么 255+1 == 0</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> red <span class="keyword">uint8</span> = <span class="number">255</span></span><br><span class="line">red++ </span><br><span class="line">fmt.Println(red)  <span class="comment">// Output: 0</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="大数"><a href="#大数" class="headerlink" title="大数"></a>大数</h4><p>个人理解 相当于科学计数法吧</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> distance <span class="keyword">int64</span> = <span class="number">41.3e12</span></span><br></pre></td></tr></table></figure>
+
+<p>big包</p>
+<p>go语言支持超过18艾的大数常规运算 底层的话是由big包提供的</p>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><p>不能混合使用不同类型的参数（与C# 一致 就不用记了</p>
+<p>强制转换  demo age := 41     marsAge := float64(age)</p>
+<h4 id="构建块"><a href="#构建块" class="headerlink" title="构建块"></a>构建块</h4><p><strong>func</strong></p>
+<p>定义</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Inin</span><span class="params">(n <span class="keyword">int</span>)</span> <span class="title">int</span> // 关键字 函数名 返回类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Ini</span><span class="params">(n <span class="keyword">int</span>)</span> <span class="params">(i <span class="keyword">int</span>, err error)</span> //相当于<span class="title">C</span># 的元组</span></span><br><span class="line">countdown, err = Ini(n) <span class="comment">//接收 与C#一致</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="编写函数"><a href="#编写函数" class="headerlink" title="编写函数"></a>编写函数</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">kelvinToCelsius</span><span class="params">(k <span class="keyword">float64</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">	k -= <span class="number">273.15</span></span><br><span class="line">	<span class="keyword">return</span> k</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	kelvin := <span class="number">294.0</span></span><br><span class="line">	celsius := kelvinToCelsius(kelvin)</span><br><span class="line">	fmt.Print(kelvin, <span class="string">"K is "</span>, celsius, <span class="string">"C"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="声明新类型"><a href="#声明新类型" class="headerlink" title="声明新类型"></a>声明新类型</h4><p>type关键字声明新类型 以float64为基底</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> celsius <span class="keyword">float64</span></span><br><span class="line"><span class="keyword">var</span> temperature celsius = <span class="number">20</span></span><br><span class="line">fmt.Println(temperature) <span class="comment">// Output 20</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>虽然celsius 类型与 float64功能一致 但是不能混合使用</strong></p>
+<p><strong>go是没有类和对象的</strong>  </p>
+<p>书上没有说 我觉得和函数shi变成有些像</p>
+<p>相当于C# 中的静态方法</p>
+<p>Two Different init</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">kelvinToCelsius</span><span class="params">(k kelvin)</span> <span class="title">celsius</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> celsius(k - <span class="number">273.15</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k kelvin)</span> <span class="title">celsius</span><span class="params">()</span> <span class="title">celsius</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> celsius(k - <span class="number">273.15</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>相当于C#中的委托吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;math&#x2F;rand&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type celsius float64</span><br><span class="line">type kelvin float64</span><br><span class="line"></span><br><span class="line">func fakeSensor() kelvin &#123;</span><br><span class="line">	return kelvin(rand.Intn(151) + 150)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func realSensor() kelvin &#123;</span><br><span class="line">	return 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func celsiusToKelvin(k celsius) kelvin &#123;</span><br><span class="line">	return kelvin(k + 273.15)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	sensor :&#x3D; fakeSensor</span><br><span class="line">	fmt.Println(sensor())</span><br><span class="line">	sensor &#x3D; realSensor</span><br><span class="line">	fmt.Println(sensor())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>声明函数类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type getRowFn func(row int) (string,string)</span><br><span class="line">func drawTable(rows int,getRow getRowFn)</span><br></pre></td></tr></table></figure>
+
+<p><strong>闭包Closure</strong></p>
+<p><strong>个人理解 延长函数的声明周期使得函数像变量一样使用</strong></p>
+<p><strong>数组</strong> </p>
+<p>数组的初始化 <strong>结尾的逗号是必须的</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr = [...]<span class="keyword">string</span>&#123;</span><br><span class="line"><span class="string">""</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>数组的迭代 两种方式 range相当于C# 中的foreach</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">arr := [<span class="number">5</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">    <span class="string">"Cares"</span>,</span><br><span class="line">    <span class="string">"Lily"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> _, name := <span class="keyword">range</span> arr &#123;</span><br><span class="line">	fmt.Println(name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>迭代器模式可以防止数组越界</strong> </p>
+<p><strong>数组的切片</strong> 跟python没什么区别  ,切片是保存的试图 原有的数组变了 会影响切片 ,即切片是没有新开辟空间的</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">var</span> arrStr = [...]<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"Lily"</span>,</span><br><span class="line">		<span class="string">"Lucy"</span>,</span><br><span class="line">		<span class="string">"Cuurent"</span>,</span><br><span class="line">		<span class="string">"Nima"</span>,</span><br><span class="line">		<span class="string">"Messi"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">fmt.Println(arrStr[:<span class="number">3</span>]) <span class="comment">// Output: [Lily Lucy Cuurent]</span></span><br><span class="line">	fmt.Println(arrStr[<span class="number">3</span>:]) <span class="comment">// [Nima Messi]</span></span><br><span class="line">	fmt.Println(arrStr[<span class="number">1</span>:<span class="number">3</span>]) <span class="comment">// [Lucy Cuurent]</span></span><br><span class="line">	b := arrStr[:<span class="number">4</span>] </span><br><span class="line">	fmt.Println(b) <span class="comment">// [Lily Lucy Cuurent Nima]</span></span><br><span class="line">	arrStr[<span class="number">3</span>] = <span class="string">"lll"</span></span><br><span class="line">	b := arrStr[:<span class="number">4</span>]  <span class="comment">// [Lily Lucy Cuurent lll]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>数组的方法 append join …… 与其他语言没啥差别</p>
+<p><strong>make方法和 stringbuilder一样 动态扩容是有所损耗的</strong> ,append后新开辟了一段空间,如下测试</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	arrStr := []<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"Lily"</span>,</span><br><span class="line">		<span class="string">"Lucy"</span>,</span><br><span class="line">		<span class="string">"Cuurent"</span>,</span><br><span class="line">		<span class="string">"Nima"</span>,</span><br><span class="line">		<span class="string">"Messi"</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	b := arrStr[:<span class="number">3</span>]</span><br><span class="line">	fmt.Println(b)</span><br><span class="line">	fmt.Println(b, <span class="built_in">cap</span>(b))</span><br><span class="line">	arrStr[<span class="number">2</span>] = <span class="string">"dsads"</span></span><br><span class="line">	fmt.Println(b, <span class="built_in">cap</span>(b))</span><br><span class="line"></span><br><span class="line">	b = <span class="built_in">append</span>(b, <span class="string">"123"</span>)</span><br><span class="line">	b = <span class="built_in">append</span>(b, <span class="string">"123"</span>)</span><br><span class="line">	b = <span class="built_in">append</span>(b, <span class="string">"123"</span>)</span><br><span class="line"></span><br><span class="line">	fmt.Println(b, <span class="built_in">cap</span>(b))</span><br><span class="line">	fmt.Println(<span class="built_in">cap</span>(arrStr))</span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(b))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// [Lily Lucy Cuurent]</span></span><br><span class="line"><span class="comment">// [Lily Lucy Cuurent] 5</span></span><br><span class="line"><span class="comment">// [Lily Lucy dsads] 5</span></span><br><span class="line"><span class="comment">// [Lily Lucy dsads 123 123 123] 10</span></span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>可变参数  和 ES6差不多  </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/06/08/%E8%BF%B7%E8%8C%AB/" rel="next" title="迷茫">
+                <i class="fa fa-chevron-left"></i> 迷茫
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="CC" />
+          <p class="site-author-name" itemprop="name">CC</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GO-Learning"><span class="nav-number">1.</span> <span class="nav-text">GO-Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-Ready"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Get-Ready</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Format"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一次声明多个变量"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">一次声明多个变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增量赋值操作-与-C-没什么差别"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">增量赋值操作 与 C# 没什么差别 ,</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机生成数字-go语言多次执行会缓存结果-多次执行也会生成一样的结果"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">随机生成数字(go语言多次执行会缓存结果,多次执行也会生成一样的结果)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环与分支"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">循环与分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作用域"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">作用域</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类型"><span class="nav-number">2.</span> <span class="nav-text">类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#整数回绕"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">整数回绕</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大数"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">大数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建块"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">构建块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写函数"><span class="nav-number">2.0.0.5.</span> <span class="nav-text">编写函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#声明新类型"><span class="nav-number">2.0.0.6.</span> <span class="nav-text">声明新类型</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CC</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
